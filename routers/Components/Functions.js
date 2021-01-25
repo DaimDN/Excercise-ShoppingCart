@@ -15,7 +15,7 @@ module.exports.getLanding = async(req, res)=>{
 module.exports.ProductApi = async(req, res)=>{
    
     try {
-        res.status(200).json(api)
+        res.status(200).json(api.items)
         
     } catch (error) {
         res.json({msg: message})
