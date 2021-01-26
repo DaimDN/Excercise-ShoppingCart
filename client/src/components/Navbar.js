@@ -1,23 +1,21 @@
 import React, {useState, useEffect} from 'react'
 import api from '../util/api'
 import { useStateValue } from "../StatePusher"
+import FlipMove from "react-flip-move";
+
 
 export default function Navbar() {
-    const[cart, setCart] = useState(false);
-    const [{ basket }, dispatch] = useStateValue();
+    const[cart, setCart] = useState(false);    
+    const [basket, setBasket] = useState([]);
 
-    const [shopitems, setshopitems] = useState();
-    useEffect(() => {
-        
-            (async function fetch(){
-                let dataset = await api.get('/api/products');
-                setshopitems(dataset.data)
-            })()
-      });
+    useEffect(()=>{
+      
 
-     
-      
-      
+        var storage= JSON.parse(localStorage.getItem('myData'));
+        setBasket(storage)
+
+    })
+
     return (
         <div >
               <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
@@ -39,11 +37,22 @@ export default function Navbar() {
                     </div>
                     <div class="card-body" style={{overflowY: 'scroll', height: '400px'}} >
                         
-                        
-                        
-                          
-                          {basket.map((ite)=>{
+                    {basket == null || basket.length === 0 ? <div className="text-center" 
+                    onMouseLeave={()=>{
+                          localStorage.removeItem('myData');
+                    }}>
+
+                    <h3>Empty Basket</h3>
+                    
+                    
+                    
+                     </div> : <div> 
+                     
+                     <div>
+                     <FlipMove duration={250} easing="ease-out">
+                            {basket.map((ite)=>{
                               return <div >
+                             
                               <div className="row"> 
                               <div className="col-3"> 
 
@@ -54,28 +63,58 @@ export default function Navbar() {
                               <div className="col-6"> 
                               <h5>  {ite.item.name}</h5>
                               <h5> {ite.item.price} £</h5>
+                             
 
                               </div>
                               <div className="col-3"> 
                                 <br/>
-                                <img style={{width: '46%'}} src="images/remove.svg" alt="" />
+                                <button style={{borderRadius: '50px'}} onClick={()=>{
+                                      var array = basket.filter(function(itemx){
+                                        return itemx !== ite;
+                                    })
+
+                                   localStorage.setItem('myData', JSON.stringify(array));   
+                                }}  className="btn btn-danger btn-sm">x</button>
+                             
                                 
                                 </div>
                               </div>
                              
 
                               <hr/>
+
                               
                               </div>
                           })}
+                          </FlipMove>
+                            
+                             </div>
+                     
+                     
+                     </div>}
+                      
+                          
                           
                         
                       
                       
                     </div>
-                    <div className=" text-center">
-                    <a href="/cart"onClick={()=>{api.post('/add', basket)}}  type="button" class="btn btn-lg btn-block btn-primary">Checkout</a>
+
+                    {basket == null || basket.length === 0 ? <div>
+                        <div className=" text-center">
+                    <a href="#"  type="button" class="btn btn-lg btn-block btn-primary disabled">Checkout</a>
                     </div>
+                     </div> : <div>
+                     <div className=" text-center">
+                    <a href="/cart"  type="button" class="btn btn-lg btn-block btn-primary">Checkout</a>
+                    </div>
+                     
+                     
+                      </div> }
+
+
+
+                  
                     </div>
 
 
