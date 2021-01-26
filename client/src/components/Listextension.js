@@ -1,45 +1,23 @@
 import React, {useState, Fragment} from 'react'
 import './style.css'
+import { useStateValue } from "../StatePusher";
 
 const Listextension = props => {
 
     const [shop, setshop] = useState(props);
-    const [basket, setBasket] = useState([]);
+    const [{ basket }, dispatch] = useStateValue();
+
+
+
+
+
+
     return (
    
       <Fragment>
      
      <div className="row">
-     {basket.map((itemx)=>{
-            return <div className="col-2">
-            <div class="card mb-4 box-shadow ">
-            <div class="card-header" >
-            <p>{itemx.name}</p>
-            <div className="row">
-            <div className="col-7">
-            <p className="disable">{itemx.price} £</p>
-              </div>
-            <div className="col-5"> 
-            
-            <img className="onl" onClick={()=>{
-             const index = basket.indexOf(itemx);
-            if (index > -1) {
-              basket.splice(index, 1);
-            }
-              
-              
-              }} style={{width: '80%'}} src="images/bin.svg" />
- </div>
-            </div>
-          
-
-            </div>
-           
-            </div>
-              
-            </div>
-          })}
-
+   
      </div>
          
           <h1> Trending Deals </h1>
@@ -94,7 +72,16 @@ const Listextension = props => {
           
 
             
-            <button  type="button" onClick={()=>{basket.push(item)}} class="btn btn-lg btn-block btn-primary">Buy</button>
+            <button  type="button" onClick={()=>{
+
+            dispatch({
+                  type: "ADD_TO_BASKET",
+                  item: {item },
+                });
+
+
+
+            }} class="btn btn-lg btn-block btn-primary">Buy</button>
         
          </div>
           </div>

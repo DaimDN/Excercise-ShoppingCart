@@ -1,8 +1,10 @@
 import React, {useState, useEffect} from 'react'
 import api from '../util/api'
+import { useStateValue } from "../StatePusher"
 
 export default function Navbar() {
     const[cart, setCart] = useState(false);
+    const [{ basket }, dispatch] = useStateValue();
 
     const [shopitems, setshopitems] = useState();
     useEffect(() => {
@@ -13,8 +15,9 @@ export default function Navbar() {
             })()
       });
 
-
-
+     
+      
+      
     return (
         <div >
               <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
@@ -25,20 +28,53 @@ export default function Navbar() {
                     <a class="p-2 text-dark" href="https://daimdev.herokuapp.com">Contact</a>
                     
                 </nav>
-                <img onMouseLeave={() => setCart(false)} onMouseEnter={()=>{setCart(true)}} style={{width: '33px'}} src="images/logo.svg"/>
+                <p className="">{basket?.length}</p> &nbsp;
+                 <img onMouseLeave={() => setCart(false)} onMouseEnter={()=>{setCart(true)}} style={{width: '33px'}} src="images/logo.svg"/>
 
 
                     {cart ?(<div onMouseLeave={() => setCart(false)} onMouseEnter={()=>{setCart(true)}}  >
-                        <div class="card mb-4 box-shadow w3-animate-zoom" style={{position: 'absolute', zIndex: '300', right: '2vw', marginTop: '20px'}}>
+                        <div class="card mb-4 box-shadow w3-animate-zoom" style={{position: 'absolute', zIndex: '300', right: '2vw', marginTop: '20px', width: '27%'}}>
                     <div class="card-header">
                        <p className="text-center">YOUR CART</p>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body" style={{overflowY: 'scroll', height: '400px'}} >
                         
-                        <ul class="list-unstyled mt-3 mb-4">
-                        <h1>Under Construction</h1>
-                        </ul>
-                        <button type="button" class="btn btn-lg btn-block btn-primary">Checkout</button>
+                        
+                        
+                          
+                          {basket.map((ite)=>{
+                              return <div >
+                              <div className="row"> 
+                              <div className="col-3"> 
+
+                              <img style={{width: '90%'}} src={ite.item.url} alt="" />
+                                
+                              </div>
+
+                              <div className="col-6"> 
+                              <h5>  {ite.item.name}</h5>
+                              <h5> {ite.item.price} £</h5>
+
+                              </div>
+                              <div className="col-3"> 
+                                <br/>
+                                <img style={{width: '46%'}} src="images/remove.svg" alt="" />
+                                
+                                </div>
+                              </div>
+                             
+
+                              <hr/>
+                              
+                              </div>
+                          })}
+                          
+                        
+                      
+                      
+                    </div>
+                    <div className=" text-center">
+                    <a href="/cart"onClick={()=>{api.post('/add', basket)}}  type="button" class="btn btn-lg btn-block btn-primary">Checkout</a>
                     </div>
                     </div>
 

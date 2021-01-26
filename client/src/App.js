@@ -4,9 +4,11 @@ import Landing from './pages/Landing'
 import Cart from './cart/cart'
 import Navbar from './components/Navbar'
 import Home from './pages/Home'
+import {StateProvider} from './StatePusher'
+import reducer, {initialState} from './Reducer'
 export default function App() {
     return (
-       
+      <StateProvider initialState={initialState} reducer={reducer}>
           <Router>
             <Fragment>
             <Navbar/>            
@@ -17,7 +19,7 @@ export default function App() {
               </Switch>
             </Fragment>
           </Router>
-   
+      </StateProvider>
       );
     };
 
