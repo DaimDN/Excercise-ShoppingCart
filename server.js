@@ -1,7 +1,6 @@
 const express = require('express')
 const path = require('path')
 const app = express()
-const contentBasePath = path.join(__dirname, 'public');
 const chalk = require('chalk');
 const config = require('config');
 const Routing = require('./routers/Routing');
@@ -22,19 +21,6 @@ if (process.env.NODE_ENV === 'production') {
 
 app.use('/', Routing);
 
-
-app.use(function(req, res, next){
-  res.status(404);
-  if(req.accepts('json')){
-      res.json(errormessage);
-  }
-  if(req.accepts('html')){
-      res.render('error');
-  }
-  if(req.accepts('text')){
-      res.send(errormessage);
-  }
-})
 
 
 
