@@ -12,6 +12,7 @@ export default function Cart() {
     const [basket, setBasket] = useState([]);
 
     const [total, setTotal] =useState(0);
+    const [display, setDisplay] = useState(false);
 
     useEffect(()=>{
       
@@ -39,7 +40,8 @@ export default function Cart() {
         }
 
         return (
-            <div className="container">
+            <div className="container w3-animate-zoom">
+            
 
             <div className="row">
                 <div className="col-3">
@@ -56,10 +58,18 @@ export default function Cart() {
                 </div>
             </div>
 
+                <br/>
+            <p className="lead">
+            Items you have added to your basket are shown below. Adjust the quantities or remove items before continuing purchase.
+            <br/>
+            </p>
+
 
           
             
             <hr/>
+
+            
             <div className="container" style={{width: '60%'}}>
             <FlipMove duration={1200} easing="ease-out">
             {basket.map((ite)=>{
@@ -100,16 +110,27 @@ export default function Cart() {
 
                               <div className="row">
                                   <div className="col-6">
-                                  <h2>Total : {Math.round(sum)} £</h2>
+                                  <h6>SubTotal Cost </h6>
+                                  <h6>VAT at 20% </h6>
+                                  <b><h6 style={{fontWeight: '900'}}>Total Cost </h6></b>
+                                  
                                   </div>
                                   <div className="col-6 text-right">
-                                  <button onClick={()=>{
-                                      alert("Thanks for your Order");
+                                  <h6> {Math.round(sum)} £</h6>
+                                  <h6> {(Math.round(sum) * 20) / 100 } £</h6>
+                                 <b> <h6 style={{fontWeight: '900'}}> {(Math.round(sum) * 120) / 100 } £</h6> </b>
+                                  <br/>
+                                 
+                                  <a onClick={()=>{
+                                        api.post('/add', basket);
                                       localStorage.removeItem('myData');
 
-                                  }} className="btn btn-primary btn-lg ">Purchase</button>
+                                  }} href="/thanks" className="btn btn-primary btn-lg ">BUY NOW</a>
                                   </div>
                               </div>
+
+
+                             
 
                               
                                                          

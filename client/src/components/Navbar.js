@@ -10,7 +10,6 @@ export default function Navbar() {
 
     useEffect(()=>{
       
-
         var storage= JSON.parse(localStorage.getItem('myData'));
         setBasket(storage)
 
@@ -19,16 +18,22 @@ export default function Navbar() {
     return (
         <div >
               <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
-                <h5 class="my-0 mr-md-auto font-weight-normal"><a href="/" className="text-dark" >Shopping App</a></h5>
+                <h3 class="my-0 mr-md-auto font-weight-normal"><a href="/" className="text-dark" >Shopping App</a></h3>
                 <nav class="my-2 my-md-0 mr-md-3">
                     <a class="p-2 text-dark" href="/products">Products</a>
                     <a class="p-2 text-dark" href="/news">News</a>
                     <a class="p-2 text-dark" href="https://daimdev.herokuapp.com">Contact</a>
                     
                 </nav>
-                <p className="">{basket?.length}</p> &nbsp;
+                
+                
                  <img onMouseLeave={() => setCart(false)} onMouseEnter={()=>{setCart(true)}} style={{width: '33px'}} src="images/logo.svg"/>
 
+                 {basket == null || basket.length === 0 ? <div>
+                    <button style={{borderRadius: '50px'}} className="btn btn-info btn-sm">0</button> &nbsp;
+                 </div> : <div>
+                    <button style={{borderRadius: '50px'}} className="btn btn-info btn-sm">{basket?.length}</button> &nbsp;
+                 </div>}
 
                     {cart ?(<div onMouseLeave={() => setCart(false)} onMouseEnter={()=>{setCart(true)}}  >
                         <div class="card mb-4 box-shadow w3-animate-zoom" style={{position: 'absolute', zIndex: '300', right: '2vw', marginTop: '20px', width: '27%'}}>
@@ -61,8 +66,9 @@ export default function Navbar() {
                               </div>
 
                               <div className="col-6"> 
-                              <h5>  {ite.item.name}</h5>
-                              <h5> {ite.item.price} £</h5>
+                              <h6>  {ite.item.name}</h6>
+                              <h6 style={{fontSize: '15px'}}> {ite.item.price} £</h6>
+                              <h6 style={{fontSize: '12px'}}> {ite.item.size} </h6>
                              
 
                               </div>

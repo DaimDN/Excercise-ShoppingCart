@@ -35,7 +35,7 @@ const Listextension = props => {
 
       
       {shop.items.map((item)=>{
-                    return  <div class="col-4 card-deck mb-3 text-center">
+                    return  <div class="col-xl-4 col-lg-4 card-deck mb-3 text-center">
         <div class="card mb-4 box-shadow ">
           <div class="card-header"  style={{backgroundImage: `url(${item.url})`, backgroundSize: 'cover'}}>
           <div style={{backgroundColor: 'rgb(0, 0, 0, 0.6)', height: '100px'}}>
@@ -92,7 +92,7 @@ const Listextension = props => {
               UpdateState();
 
 
-              }} class="btn btn-lg btn-block btn-primary">Buy</button>
+              }} class="btn btn-lg btn-block btn-info">Buy</button>
             </div>
             
             

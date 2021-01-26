@@ -27,7 +27,7 @@ export default function ShoppingList() {
         return (
       
             <Fragment>
-            <div className="container">
+            <div className="container w3-animate-opacity">
                <Listextension items={shopitems} />
                </div>
             </Fragment>
