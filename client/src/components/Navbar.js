@@ -25,7 +25,7 @@ export default function Navbar() {
                     <a class="p-2 text-dark" href="https://daimdev.herokuapp.com">Contact</a>
                     
                 </nav>
-                <img onMouseLeave={() => setCart(false)} onMouseEnter={()=>{setCart(true)}} style={{width: '33px'}} src="https://www.flaticon.com/svg/vstatic/svg/3081/3081559.svg?token=exp=1611615283~hmac=05ceb7cbdb7b7cd1b68adde8e0325b40"/>
+                <img onMouseLeave={() => setCart(false)} onMouseEnter={()=>{setCart(true)}} style={{width: '33px'}} src="images/logo.svg"/>
 
 
                     {cart ?(<div onMouseLeave={() => setCart(false)} onMouseEnter={()=>{setCart(true)}}  >
