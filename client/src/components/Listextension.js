@@ -28,7 +28,7 @@ const Listextension = props => {
             }
               
               
-              }} style={{width: '80%'}} src="https://www.flaticon.com/svg/vstatic/svg/3221/3221897.svg?token=exp=1611620121~hmac=c093c8c283552ce6ce5cc16cf84952ab" />
+              }} style={{width: '80%'}} src="images/bin.svg" />
  </div>
             </div>
           
