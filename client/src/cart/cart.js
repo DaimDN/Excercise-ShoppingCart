@@ -13,14 +13,21 @@ export default function Cart() {
 
     const [total, setTotal] =useState(0);
     const [display, setDisplay] = useState(false);
+    const [apidata, setapiData] = useState([]);
+
+    const [filler, setfiller] = useState([]);
 
     useEffect(()=>{
       
 
         var storage= JSON.parse(localStorage.getItem('myData'));
+        var Apis = JSON.parse(localStorage.getItem('apidata'));
+        setapiData(Apis)
         setBasket(storage)
 
     })
+
+ 
 
     if( basket == null || basket.length === 0){
 
@@ -33,11 +40,30 @@ export default function Cart() {
         
     }
     else{
+      
+
+        var array = [];
+        const uniqueObjects = [...new Map(basket.map(items => [items.item.sku, items])).values()]
+        
+        uniqueObjects.forEach(function(val){
+           
+           var search = val.item.sku;
+
+           var occurences = basket.filter(function(xy){
+               return xy.item.sku === search
+           }).length;
+
+           var obj = {"item": val.item, times: occurences};
+           array.push(obj);
+
+
+        })
         for(var a =0; a < basket.length; a ++){
             var x = basket[a].item.price;
             sum = sum + x;
           
         }
+
 
         return (
             <div className="container w3-animate-zoom">
@@ -71,31 +97,47 @@ export default function Cart() {
 
             
             <div className="container" style={{width: '60%'}}>
+
+
             <FlipMove duration={1200} easing="ease-out">
-            {basket.map((ite)=>{
+            {array.map((ite)=>{
                                   return <div >
                                   <div className="row"> 
-                                  <div className="col-3"> 
+                                  <div className="col-xl-3 col-lg-3"> 
     
                                   <img style={{width: '34%'}} src={ite.item.url} alt="" />
                                     
                                   </div>
     
-                                  <div className="col-6"> 
+                                  <div className="col-xl-3 col-lg-3"> 
                                   <h5> Name  : {ite.item.name}</h5>
                                   <h5> Price :  {ite.item.price} £</h5>
                                   <h5>Size : {ite.item.size}</h5>
     
                                   </div>
-                                  <div className="col-3"> 
+                                  <div className="col-xl-3 col-lg-3">
+                                  <br/>
+                                      <input type="Number" className="form-control" value={ite.times} />
+                                  </div>
+                                  <div className="col-xl-3 col-lg-3"> 
                                     <br/>
                                    <button onClick={()=>{
+                                       
+                                       var objects = ite.item;
+                                       console.log(objects);
+
+                                       
                                      
-                                    var array = basket.filter(function(itemx){
-                                        return itemx !== ite;
+                                    var alparray = basket.filter(function(itemx){
+                                        console.log(itemx)
+                                        return itemx.item !== objects;
                                     })
 
-                                   localStorage.setItem('myData', JSON.stringify(array));                                  
+                                    //console.log(alparray)
+
+                                   
+
+                                   localStorage.setItem('myData', JSON.stringify(alparray));                                  
                                    }} className="btn btn-danger btn-sm">Remove</button>
                                     
                                     </div>
@@ -107,6 +149,14 @@ export default function Cart() {
                                   </div>
                               })}
                               </FlipMove>
+
+
+                              
+
+
+<hr/>
+
+
 
                               <div className="row">
                                   <div className="col-6">
