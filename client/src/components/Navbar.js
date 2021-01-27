@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import api from '../util/api'
 import { useStateValue } from "../StatePusher"
 import FlipMove from "react-flip-move";
+import './style.css'
 
 
 export default function Navbar() {
@@ -36,7 +37,7 @@ export default function Navbar() {
                  </div>}
 
                     {cart ?(<div onMouseLeave={() => setCart(false)} onMouseEnter={()=>{setCart(true)}}  >
-                        <div class="card mb-4 box-shadow w3-animate-zoom" style={{position: 'absolute', zIndex: '300', right: '2vw', marginTop: '20px', width: '27%'}}>
+                        <div class="card mb-4 box-shadow w3-animate-zoom mobile" style={{position: 'absolute', zIndex: '300', right: '2vw', marginTop: '20px', width: '27%'}}>
                     <div class="card-header">
                        <p className="text-center">YOUR CART</p>
                     </div>

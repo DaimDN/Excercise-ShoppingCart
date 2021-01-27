@@ -3,3 +3,13 @@
     
 }
 
+@media only screen and (max-width: 900px) {
+    
+    .mobile{
+        width: 80% !important;
+        position: absolute;
+        margin-right: 6%;
+        top: 40px;
+        
+    }
+  }
