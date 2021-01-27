@@ -200,6 +200,8 @@ export default function Cart() {
                                       localStorage.removeItem('myData');
 
                                   }} href="/thanks" className="btn btn-primary btn-lg ">BUY NOW</a>
+                                  <br/>
+                                  <br/>
                                   </div>
                               </div>
 
