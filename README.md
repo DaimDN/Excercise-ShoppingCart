@@ -1,5 +1,9 @@
 # My Application
 
+## Setup 
+
+<code> npm i  </code>
+
 I am Daim a Full-Stack Developer
 
 ## Which Browsers/Devices or Virtualisation services did you check the application in?
