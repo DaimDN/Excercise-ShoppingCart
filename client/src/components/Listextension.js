@@ -8,11 +8,6 @@ const Listextension = props => {
     const [{ basket }, dispatch] = useStateValue();
 
    
-
-
-    
-
-
     function UpdateState(){
       localStorage.setItem('myData', JSON.stringify(basket));
     }
