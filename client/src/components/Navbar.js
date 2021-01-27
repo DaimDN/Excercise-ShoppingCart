@@ -42,9 +42,12 @@ export default function Navbar() {
                     </div>
                     <div class="card-body" style={{overflowY: 'scroll', height: '400px'}} >
                         
-                    {basket == null || basket.length === 0 ? <div className="text-center" 
-                    onMouseLeave={()=>{
+                    {basket == null || basket.length === 0 ? <div className="text-center"  style={{height: '100px'}}
+                    onMouseOver={()=>{
+                      
                           localStorage.removeItem('myData');
+                          window.location.reload();
+                          
                     }}>
 
                     <h3>Empty Basket</h3>
