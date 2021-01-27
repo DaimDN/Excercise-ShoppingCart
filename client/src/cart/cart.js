@@ -121,6 +121,31 @@ export default function Cart() {
                                   </div>
                                   <div className="col-xl-3 col-lg-3"> 
                                     <br/>
+
+                                    <button onClick={()=>{
+                                       
+                                       var objects = ite.item;
+                                       
+
+                                       var newbask = [];
+                                       basket.forEach(function(vas){
+                                           var itemsx = vas.item;
+                                           newbask.push({item: itemsx});
+                                       })
+                                       newbask.push({item: objects});
+                                       
+
+                                       console.log(newbask)
+                                       console.log("-------------")
+                                       console.log(basket);
+
+                               localStorage.setItem('myData', JSON.stringify(newbask));                                  
+                                   }} className="btn btn-primary btn-sm">Add</button>
+
+
+                                   &nbsp; &nbsp;
+
+
                                    <button onClick={()=>{
                                        
                                        var objects = ite.item;
@@ -132,6 +157,7 @@ export default function Cart() {
                                         console.log(itemx)
                                         return itemx.item !== objects;
                                     })
+                                    
 
                                     //console.log(alparray)
 
@@ -155,8 +181,6 @@ export default function Cart() {
 
 
 <hr/>
-
-
 
                               <div className="row">
                                   <div className="col-6">
