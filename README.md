@@ -1,16 +1,32 @@
-# My Application
+# Daim Shopper
 
-## Setup 
+## How to Setup ?
 
 <code> npm i  </code>
+<br/>
+<code> cd client  </code>
+<br/>
+<code> npm i  </code>
+<br/>
 
-I am Daim a Full-Stack Developer
+## How to Run ?
 
-## Which Browsers/Devices or Virtualisation services did you check the application in?
+<code> npm run dev  </code>
 
-Browser :  I have used Chrome and MicroSoft Edge. 
+
+## Tools used 
+
+Tools :  I have used Chrome, MicroSoft Edge, Visual Studio Code, CMD, Heroku, Github, React Development Tools, Console.
 
 Virtualisation Services : I have deployed Application using Local WorkStation and Heroku Cloud Computing
+
+## Library Used
+
+I have used jest, mocha, chai, supertest for testing the api and routes code status. I have used React for frontend and Express for backend. I have used axios for data fetching.
+
+## How long did I spend ?
+
+I have spend around 12 hours 
 
 
 ## Anything you want to tell us?
