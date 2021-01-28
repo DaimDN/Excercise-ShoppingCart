@@ -40,6 +40,7 @@
     "concurrently": "^5.3.0",
     "config": "^3.3.3",
     "cors": "^2.8.5",
+    "client": "file:client",
     "express": "^4.17.1",
     "mocha": "^8.2.1",
     "normalize-url": "^5.3.0",

@@ -4,14 +4,19 @@ import { useStateValue } from "../StatePusher";
 
 const Listextension = props => {
 
+
     const [shop, setshop] = useState(props);
     const [{ basket }, dispatch] = useStateValue();
+
+
+   
 
    
     function UpdateState(){
       localStorage.setItem('myData', JSON.stringify(basket));
     }
 
+   
 
     return (
    
