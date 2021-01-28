@@ -13,3 +13,17 @@
         
     }
   }
+
+  @media only screen and (max-width: 1250px) {
+
+
+    .deletes{
+        width: 56px !important;
+    }
+
+
+
+  }
+
+
+  

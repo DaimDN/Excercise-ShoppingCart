@@ -3,7 +3,7 @@ import { useStateValue } from "../StatePusher"
 import api from '../util/api'
 import { useHistory } from "react-router-dom";
 import FlipMove from "react-flip-move";
-
+import '../components/style.css'
 
 export default function Cart() {
 
@@ -103,7 +103,7 @@ export default function Cart() {
             {array.map((ite)=>{
                                   return <div >
                                   <div className="row"> 
-                                  <div className="col-xl-3 col-lg-3"> 
+                                  <div className="col-xl-3 col-lg-3 text-center"> 
     
                                   <img style={{width: '34%'}} src={ite.item.url} alt="" />
                                     
@@ -140,21 +140,21 @@ export default function Cart() {
                                        console.log(basket);
 
                                localStorage.setItem('myData', JSON.stringify(newbask));                                  
-                                   }} className="btn btn-primary btn-sm">Add</button>
+                                   }} className="btn btn-primary btn-sm">+</button>
 
 
-                                   &nbsp; &nbsp;
+                                   &nbsp; 
 
 
                                    <button onClick={()=>{
                                        
                                        var objects = ite.item;
-                                       console.log(objects);
+                                      
 
                                        
                                      
                                     var alparray = basket.filter(function(itemx){
-                                        console.log(itemx)
+                                       
                                         return itemx.item !== objects;
                                     })
                                     
@@ -164,7 +164,29 @@ export default function Cart() {
                                    
 
                                    localStorage.setItem('myData', JSON.stringify(alparray));                                  
-                                   }} className="btn btn-danger btn-sm">Remove</button>
+                                   }} className="btn btn-info btn-sm">-</button>
+
+
+
+                                    &nbsp; &nbsp;
+
+
+
+
+                                 <img src="images/bin3.svg" style={{width: '40%'}}
+                                 
+                                 alt=""
+                                  onClick={()=>{
+                                              
+                                    var objects = ite.item;
+                                    
+                                    var filtered = basket.filter(function(values, index, arr){ 
+                                            return values.item.sku !== objects.sku;
+                                        });
+        
+
+                                     localStorage.setItem('myData', JSON.stringify(filtered));                                  
+                                            }} className="btn deletes"/>
                                     
                                     </div>
                                   </div>
