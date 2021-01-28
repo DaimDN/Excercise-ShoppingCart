@@ -31,7 +31,7 @@ export default function Navbar() {
                  <img onMouseLeave={() => setCart(false)} onMouseEnter={()=>{setCart(true)}} style={{width: '33px'}} src="images/logo.svg"/>
 
                  {basket == null || basket.length === 0 ? <div>
-                    <button style={{borderRadius: '50px'}} className="btn btn-info btn-sm">0</button> &nbsp;
+                    <button style={{borderRadius: '50px'}} className="btn btn-outline-info btn-sm">0</button> &nbsp;
                  </div> : <div>
                     <button style={{borderRadius: '50px'}} className="btn btn-info btn-sm">{basket?.length}</button> &nbsp;
                  </div>}

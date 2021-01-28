@@ -140,7 +140,7 @@ export default function Cart() {
                                        console.log(basket);
 
                                localStorage.setItem('myData', JSON.stringify(newbask));                                  
-                                   }} className="btn btn-primary btn-sm">+</button>
+                                   }} className="btn btn-outline-primary btn-sm">+</button>
 
 
                                    &nbsp; 
@@ -164,7 +164,7 @@ export default function Cart() {
                                    
 
                                    localStorage.setItem('myData', JSON.stringify(alparray));                                  
-                                   }} className="btn btn-info btn-sm">-</button>
+                                   }} className="btn btn-outline-info btn-sm">-</button>
 
 
 
