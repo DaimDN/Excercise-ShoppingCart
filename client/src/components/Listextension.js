@@ -16,7 +16,7 @@ const Listextension = props => {
       localStorage.setItem('myData', JSON.stringify(basket));
     }
 
-   
+    console.log(shop);
 
     return (
    
