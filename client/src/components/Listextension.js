@@ -1,22 +1,12 @@
-import React, {useState, Fragment, useEffect} from 'react'
+import React, { Fragment} from 'react'
 import './style.css'
-import { useStateValue } from "../StatePusher";
 
 const Listextension = props => {
 
 
-    const [shop, setshop] = useState(props);
-    const [{ basket }, dispatch] = useStateValue();
+    const shop = (props);
 
 
-   
-
-   
-    function UpdateState(){
-      localStorage.setItem('myData', JSON.stringify(basket));
-    }
-
-    console.log(shop);
 
     return (
    
@@ -84,12 +74,31 @@ const Listextension = props => {
             : <div>
             <button  type="button" onClick={()=>{
 
-              dispatch({
-                    type: "ADD_TO_BASKET",
-                    item: {item },
-                  });
 
-              UpdateState();
+              var BasketArray = JSON.parse(localStorage.getItem('myData'));
+              var Obj = {item: item};
+
+              var newArray = [];
+              
+              if(BasketArray === null || BasketArray.length === 0){
+                newArray.push(Obj);
+
+              }
+              else{
+
+                BasketArray.forEach(function(x){
+                newArray.push(x);
+              })
+              newArray.push(Obj);
+
+              }
+
+
+                localStorage.setItem('myData', JSON.stringify(newArray));
+                window.location.reload();
+
+             
+               
 
 
               }} class="btn btn-lg btn-block btn-info">Buy</button>

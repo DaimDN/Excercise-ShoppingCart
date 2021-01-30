@@ -1,16 +1,13 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment} from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Landing from './pages/Landing'
 import Cart from './cart/cart'
 import Navbar from './components/Navbar'
 import Home from './pages/Home'
-import {StateProvider} from './StatePusher'
-import reducer, {initialState} from './Reducer'
 import Thanks from './pages/Thanks'
 import Orders from './pages/Order'
 export default function App() {
     return (
-      <StateProvider initialState={initialState} reducer={reducer}>
           <Router>
             <Fragment>
             <Navbar/>            
@@ -24,7 +21,6 @@ export default function App() {
               </Switch>
             </Fragment>
           </Router>
-      </StateProvider>
       );
     };
 
@@ -37,9 +33,9 @@ export default function App() {
 
             
 
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xl-7 col-lg-7">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-xl-7 col-lg-7">
                           <br/>
                             <h1 className="display-2"> Page Not Found </h1>
                             <br/>
@@ -47,7 +43,7 @@ export default function App() {
                             
                             <a className="btn btn-info btn-lg" href="/products">Buy products</a>
                         </div>
-                        <div class="col-xl-5 col-lg-5"></div>
+                        <div className="col-xl-5 col-lg-5"></div>
                     </div>
                     
 

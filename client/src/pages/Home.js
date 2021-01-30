@@ -21,9 +21,9 @@ export default function Home() {
         <div className="row">
             <div className="col-xl-6">
             
-            <div class="container">
-                    <div class="row container">
-                        <div class="container">
+            <div className="container">
+                    <div className="row container">
+                        <div className="container">
                         <br/>
                         <br/>
                         <br/>
@@ -36,7 +36,7 @@ export default function Home() {
                             
                             <a className="btn btn-info btn-lg" href="/products">Buy products</a>
                         </div>
-                        <div class=""></div>
+                       
                     </div>
                     
 

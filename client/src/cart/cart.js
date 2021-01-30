@@ -1,31 +1,41 @@
 import React, {useEffect, useState} from 'react'
-import { useStateValue } from "../StatePusher"
 import api from '../util/api'
-import { useHistory } from "react-router-dom";
 import FlipMove from "react-flip-move";
 import '../components/style.css'
+
+
+
+
+
 
 export default function Cart() {
 
     var sum =0;
 
     const [basket, setBasket] = useState([]);
-
-    const [total, setTotal] =useState(0);
-    const [display, setDisplay] = useState(false);
     const [apidata, setapiData] = useState([]);
 
-    const [filler, setfiller] = useState([]);
+
+
+    const saveLocalStorage = () => {
+        var storage= JSON.parse(localStorage.getItem('myData'));
+        setBasket(storage);
+       
+      };
+
+    const saveApiData = () => {
+        var Apis = JSON.parse(localStorage.getItem('apidata'));
+        setapiData(Apis)
+
+    }
+
 
     useEffect(()=>{
       
+        saveLocalStorage();
+        saveApiData();
 
-        var storage= JSON.parse(localStorage.getItem('myData'));
-        var Apis = JSON.parse(localStorage.getItem('apidata'));
-        setapiData(Apis)
-        setBasket(storage)
-
-    })
+    },[])
 
  
 
@@ -100,7 +110,7 @@ export default function Cart() {
 
 
             <FlipMove duration={1200} easing="ease-out">
-            {array.map((ite)=>{
+            {array.map((ite, index)=>{
                                   return <div >
                                   <div className="row"> 
                                   <div className="col-xl-3 col-lg-3 text-center"> 
@@ -133,13 +143,11 @@ export default function Cart() {
                                            newbask.push({item: itemsx});
                                        })
                                        newbask.push({item: objects});
-                                       
 
-                                       console.log(newbask)
-                                       console.log("-------------")
-                                       console.log(basket);
+                                     
 
-                               localStorage.setItem('myData', JSON.stringify(newbask));                                  
+                               localStorage.setItem('myData', JSON.stringify(newbask)); 
+                               window.location.reload();                                 
                                    }} className="btn btn-outline-primary btn-sm">+</button>
 
 
@@ -163,7 +171,8 @@ export default function Cart() {
 
                                    
 
-                                   localStorage.setItem('myData', JSON.stringify(alparray));                                  
+                                   localStorage.setItem('myData', JSON.stringify(alparray));   
+                                   window.location.reload();                               
                                    }} className="btn btn-outline-info btn-sm">-</button>
 
 
@@ -185,7 +194,8 @@ export default function Cart() {
                                         });
         
 
-                                     localStorage.setItem('myData', JSON.stringify(filtered));                                  
+                                     localStorage.setItem('myData', JSON.stringify(filtered));  
+                                     window.location.reload();                                
                                             }} className="btn deletes"/>
                                     
                                     </div>
@@ -199,10 +209,7 @@ export default function Cart() {
                               </FlipMove>
 
 
-                              
-
-
-<hr/>
+                                <hr/>
 
                               <div className="row">
                                   <div className="col-6">
@@ -218,8 +225,33 @@ export default function Cart() {
                                   <br/>
                                  
                                   <a onClick={()=>{
-                                        api.post('/add', basket);
+
+                                      var array = [];
+                                   
+
+                                    uniqueObjects.forEach(function(val){
+           
+                                    var search = val.item.sku;
+
+                                    var occurences = basket.filter(function(xy){
+                                        return xy.item.sku === search
+                                    }).length;
+
+                                    var obj = {"item": val.item, times: occurences};
+                                    array.push(obj);
+
+
+                                    })
+
+                                    api.put('/update', array);
+
+                                    api.post('/add', basket);
+
+                                    console.log(basket);
+
+
                                       localStorage.removeItem('myData');
+                                      
 
                                   }} href="/thanks" className="btn btn-primary btn-lg ">BUY NOW</a>
                                   <br/>

@@ -14,7 +14,13 @@ export default function Order() {
 
     })();
     
-    })
+    }, [data])
+
+   
+
+
+    
+
     
     return (
         <div>
@@ -23,9 +29,10 @@ export default function Order() {
             Recent Orders
         </h1>
         <hr/>
-        {data == null || data.length === undefined ? 
+        {data == null  || data.length === 'undefined'  ? 
         <div>
-        <h1>No Item available</h1>
+       
+        <h3>No Item available</h3>
         
          </div> :
           <div> 
@@ -33,36 +40,40 @@ export default function Order() {
 
                 {data.map((item, index)=>{
                     return <div>
-                    <br/>
-                  <h4>  Order # {index + 1} </h4>
+                    <br/><br/>
+                  <h1 className="display-4">  Order : {index + 1} </h1>
                   <hr/>
-                  <br/>
                   
                   
-                    <table class="table table-striped" style={{width: '70%'}}>
+                  
+                    <table className="table table-striped" style={{width: '70%'}}>
                         <tbody>
-                        <tr>
+                        
 
-                    {item.map((inner)=>{
-                        return <div>
+                    {item.map((inner, i)=>{
+                        return <tr>
 
                         
                         
-                        <td>{inner.item.name}</td>
-                        <td>{inner.item.size}</td>
-                        <td>{inner.item.price }  £</td>
-                       
+                        <td >{inner.item.name}</td>
+                        <td  >{inner.item.size}</td>
+                        <td  >{inner.item.price }  £</td>
+                                             
 
 
-                        </div>
+                        </tr>
                     })}
-                    </tr>
+
+                    
+                    
                         
                         </tbody>
                         </table>
                     
                      </div>
                 })}
+               
+                
          
           </div>}
 
