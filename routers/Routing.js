@@ -1,6 +1,6 @@
 const express = require('express');
 const Router = express.Router();
-const {getLanding, ProductApi, Errorway, getCheckData, Basket, UpdateApi} = require('./Components/Functions')
+const {getLanding, ProductApi, Errorway, getCheckData, Basket, UpdateApi, deleteData} = require('./Components/Functions')
 
 
 //@All of the Landing Page Functions 

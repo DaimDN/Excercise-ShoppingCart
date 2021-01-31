@@ -1,8 +1,10 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useRef} from 'react'
 import api from '../util/api'
+import ReactToPrint from 'react-to-print';
 export default function Order() {
 
     const [data, setData] = useState(undefined);
+    const componentRef = useRef();
 
     useEffect(()=>{
     
@@ -17,6 +19,7 @@ export default function Order() {
     }, [data])
 
     return (
+        <div ref={componentRef}>
         <div>
         <div className="container">
         <h1 className="display-5">
@@ -34,12 +37,18 @@ export default function Order() {
         
          </div> :<div> 
          <a href="/products" className="btn btn-primary btn-lg">Order More</a>  &nbsp; 
-          <button href="/" className="btn btn-info btn-lg">Reset Orders</button>         
+        
 
+         <ReactToPrint
+        trigger={() =>  <button className="btn btn-lg btn-dark text-white">Print</button>}
+        content={() => componentRef.current}
+                />
+
+                
                 {data.map((item, index)=>{
                     return <div key={index}>
                     <br/><br/>
-                  <h1 className="display-5">  Order : {index + 1} </h1>
+                  <h1 className="display-5">  Order No : {index + 44556760} </h1>
                  
                   
                   
@@ -79,13 +88,17 @@ export default function Order() {
                     
                      </div>
                 })}
+                
                
                 
          
           </div>}
 
+          
+
         </div>
             
+        </div>
         </div>
     )
 }

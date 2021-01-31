@@ -12,6 +12,7 @@
     "react-flip-move": "^3.0.4",
     "react-loader-spinner": "^3.1.14",
     "react-scripts": "4.0.1",
+    "react-to-print": "^2.12.2",
     "use-effect-x": "^0.1.5",
     "web-vitals": "^0.2.4"
   },
