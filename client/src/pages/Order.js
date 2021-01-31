@@ -16,7 +16,7 @@ export default function Order() {
 
     })();
     
-    }, [data])
+    }, [])
 
     return (
         <div ref={componentRef}>
