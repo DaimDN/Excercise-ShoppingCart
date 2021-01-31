@@ -48,14 +48,16 @@ export default function Order() {
                 {data.map((item, index)=>{
                     return <div key={index}>
                     <br/><br/>
-                  <h1 className="display-5">  Order No : {index + 44556760} </h1>
+                  <h1 className="display-6 ">  Order No : {index + 44556760} </h1>
+                  <br/>
                  
                   
                   
                   
-                    <table className="table table-striped" style={{width: '70%'}}>
+                    <table className="table table-striped" style={{width: '80%'}}>
                     <thead className="bg-dark text-white">
                         <tr>
+                        <th className="text-white">Item No:</th>
                         <th className="text-white">Product Name</th>
                         <th className="text-white">Item Size</th>
                         <th className="text-white"> Item Price  £</th>
@@ -70,7 +72,7 @@ export default function Order() {
                         return <tr key={i}>
 
                         
-                        
+                        <td >{i+ 1}</td>
                         <td >{inner.item.name}</td>
                         <td  >{inner.item.size}</td>
                         <td  >{inner.item.price }  £</td>

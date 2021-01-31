@@ -24,9 +24,9 @@ export default function Navbar() {
 
   return (
       <div >
-            <div className="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
+            <div className="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow" >
               <h3 className="my-0 mr-md-auto font-weight-normal"><a href="/" className="text-dark" ><img style={{width: '40%'}} src="images/aq.png" alt=""/></a></h3>
-              <nav className="my-2 my-md-0 mr-md-3">
+              <nav className="my-2 my-md-0 mr-md-3" >
                   <a className="p-2 text-dark" href="/products">Products</a>
                   <a className="p-2 text-dark" href="/news">News</a>
                   <a className="p-2 text-dark" href="https://daimdev.com">Contact</a>

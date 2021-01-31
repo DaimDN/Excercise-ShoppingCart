@@ -34,7 +34,6 @@ module.exports.UpdateApi = async(req, res)=>{
     try {
 
         var basketset = req.body;
-        console.log(basketset)
         
         basketset.forEach(function(val){
             var stocklevel = val.times;

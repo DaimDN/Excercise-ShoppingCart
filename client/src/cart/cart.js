@@ -18,8 +18,8 @@ export default function Cart() {
 
 
     const saveLocalStorage = () => {
-        var storage= JSON.parse(localStorage.getItem('myData'));
-        setBasket(storage);
+       var storage= JSON.parse(localStorage.getItem('myData'));
+      setBasket(storage);
        
       };
 
@@ -128,7 +128,7 @@ export default function Cart() {
                                   </div>
                                   <div className="col-xl-3 col-lg-3">
                                   <br/>
-                                      <input type="Number" className="form-control" value={ite.times} />
+                                      <input readOnly type="Number" className="form-control" value={ite.times} />
                                   </div>
                                   <div className="col-xl-3 col-lg-3"> 
                                     <br/>
