@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect} from 'react'
+import React, { Fragment} from 'react'
 import './style.css'
 
 const Listextension = props => {
@@ -55,7 +55,7 @@ const Listextension = props => {
     <tr>
     
       <td>StockLevel</td>
-      <td >{item.stockLevel}</td>
+      <td >{item.stockLevel >= 9 ? <div className="text-dark">{item.stockLevel} Left</div> : <div className="text-danger"> {item.stockLevel} Left</div>}</td>
    
     </tr>
           </tbody>
