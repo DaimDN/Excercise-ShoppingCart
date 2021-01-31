@@ -28,7 +28,7 @@ export default function Navbar() {
               <nav className="my-2 my-md-0 mr-md-3">
                   <a className="p-2 text-dark" href="/products">Products</a>
                   <a className="p-2 text-dark" href="/news">News</a>
-                  <a className="p-2 text-dark" href="https://daimdev.herokuapp.com">Contact</a>
+                  <a className="p-2 text-dark" href="https://daimdev.com">Contact</a>
                   
               </nav>
               
@@ -62,9 +62,9 @@ export default function Navbar() {
                    </div> : <div> 
                    
                    <div>
-                   <FlipMove class="flip-wrapper" duration={250} easing="ease-out">
-                          {sbasket.map((ite)=>{
-                            return <div >
+                   <FlipMove className="flip-wrapper" duration={250} easing="ease-out">
+                          {sbasket.map((ite, index)=>{
+                            return <div key={index} >
 
                                                          
                             <div className="row"> 

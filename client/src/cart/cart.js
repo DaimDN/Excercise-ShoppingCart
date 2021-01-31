@@ -89,6 +89,7 @@ export default function Cart() {
                 <br/>
                 <button onClick={()=>{
                     localStorage.removeItem('myData');
+                    window.location.reload();
                 }} className="btn btn-info">Empty Cart</button>
             </div>
                 </div>
@@ -111,7 +112,7 @@ export default function Cart() {
 
             <FlipMove duration={1200} easing="ease-out">
             {array.map((ite, index)=>{
-                                  return <div >
+                                  return <div key={index} >
                                   <div className="row"> 
                                   <div className="col-xl-3 col-lg-3 text-center"> 
     
@@ -167,9 +168,6 @@ export default function Cart() {
                                     })
                                     
 
-                                    //console.log(alparray)
-
-                                   
 
                                    localStorage.setItem('myData', JSON.stringify(alparray));   
                                    window.location.reload();                               

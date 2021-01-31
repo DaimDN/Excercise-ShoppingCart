@@ -28,7 +28,7 @@ export default function App() {
     function Error(){
       return (
         <div className="w3-animate-zoom">
-            <div style={{backgroundImage: 'url(images/1.jpg)', height: '500px', backgroundSize: 'cover'}} id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div style={{backgroundImage: 'url(images/1.jpg)', height: '500px', backgroundSize: 'cover'}} id="carouselExampleControls" className="carousel slide" data-ride="carousel">
 
 
             

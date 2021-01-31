@@ -16,42 +16,49 @@ export default function Order() {
     
     }, [data])
 
-   
-
-
-    
-
-    
     return (
         <div>
         <div className="container">
         <h1 className="display-5">
             Recent Orders
+           
         </h1>
+        
         <hr/>
-        {data == null  || data.length === 'undefined'  ? 
-        <div>
+        {data == null  || data.length === 0  ?<div>
        
         <h3>No Item available</h3>
+        <br/>
+        <br/>
+        <a href="/products" className="btn btn-primary btn-lg" >Order Now</a>
         
-         </div> :
-          <div> 
-          
+         </div> :<div> 
+         <a href="/products" className="btn btn-primary btn-lg">Order More</a>  &nbsp; 
+          <button href="/" className="btn btn-info btn-lg">Reset Orders</button>         
 
                 {data.map((item, index)=>{
-                    return <div>
+                    return <div key={index}>
                     <br/><br/>
-                  <h1 className="display-4">  Order : {index + 1} </h1>
-                  <hr/>
+                  <h1 className="display-5">  Order : {index + 1} </h1>
+                 
                   
                   
                   
                     <table className="table table-striped" style={{width: '70%'}}>
+                    <thead className="bg-dark text-white">
+                        <tr>
+                        <th className="text-white">Product Name</th>
+                        <th className="text-white">Item Size</th>
+                        <th className="text-white"> Item Price  £</th>
+
+                        </tr>
+
+                    </thead>
                         <tbody>
                         
 
                     {item.map((inner, i)=>{
-                        return <tr>
+                        return <tr key={i}>
 
                         
                         
